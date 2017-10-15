@@ -1,4 +1,4 @@
-# Sluggable Rails
+# Sluggable Rails 🏅
 Provide a unique slug to your records, generated from the attribute of your choice.
 
 ## Usage
@@ -33,6 +33,23 @@ The slug is generated with the [`parameterize` method](http://api.rubyonrails.or
 ```ruby
 has_slug :custom_attribute, by: :title, separator: '_'
 ```
+
+Obviously, you have to add the corresponding column to your schema:
+
+```ruby
+class CreatePosts < ActiveRecord::Migration[5.1]
+  def change
+    create_table :posts do |t|
+      t.string :title
+      t.string :slug, null: false, index: true, unique: true # Or your custom attribute
+
+      t.timestamps
+    end
+  end
+end
+```
+
+The slug will be automatically generated in order to be unique. And a `presence` and `uniqueness` validations will also be added by the `has_slug` method.
 
 ## Installation
 Add this line to your application's Gemfile:
