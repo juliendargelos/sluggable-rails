@@ -38,7 +38,7 @@ You can choose another attribute to store it:
 has_slug :custom_attribute, by: :title
 ```
 
-The slug is generated with the [`parameterize` method](http://api.rubyonrails.org/v5.1/classes/ActiveSupport/Inflector.html#method-i-parameterize), you can specify a separator as it excepts (default: `'-'`):
+The slug is generated with the [`parameterize` method](http://api.rubyonrails.org/v5.1/classes/ActiveSupport/Inflector.html#method-i-parameterize), you can specify a separator as it expects (default: `'-'`):
 
 ```ruby
 has_slug :custom_attribute, by: :title, separator: '_'
