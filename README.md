@@ -23,6 +23,14 @@ class Post < ActiveRecord::Base
 end
 ```
 
+```ruby
+post = Post.create title: 'My first slugified post!
+post.slug # "my-first-slugified-post"
+
+another_post = Post.create title: 'My first slugified post!'
+another_post.slug # "my-first-slugified-post-1"
+```
+
 In this example, the slug will be generated from the post title. By default, it will be stored in the slug attribute.
 You can choose another attribute to store it:
 
