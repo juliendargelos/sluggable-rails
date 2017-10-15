@@ -24,7 +24,7 @@ end
 ```
 
 ```ruby
-post = Post.create title: 'My first slugified post!
+post = Post.create title: 'My first slugified post!'
 post.slug # "my-first-slugified-post"
 
 another_post = Post.create title: 'My first slugified post!'
