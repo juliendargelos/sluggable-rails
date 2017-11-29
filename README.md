@@ -1,4 +1,5 @@
 # Sluggable Rails 🏅
+[![Gem Version](https://badge.fury.io/rb/sluggable-rails.svg)](https://badge.fury.io/rb/sluggable-rails)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d260555b2cbb561875b4/maintainability)](https://codeclimate.com/github/juliendargelos/sluggable-rails/maintainability)
 
 Provide a unique slug to your records, generated from the attribute of your choice.
