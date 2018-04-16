@@ -7,8 +7,8 @@ class Sluggable::Rails::Definitions
     @definitions[attribute.to_s.to_sym]
   end
 
-  def add(attribute = :slug, origin:, separator: '-')
-    @definitions[attribute.to_s.to_sym] = Sluggable::Rails::Definition.new attribute, origin: origin, separator: separator
+  def add(attribute = :slug, origin:, separator: '-', scope: nil)
+    @definitions[attribute.to_s.to_sym] = Sluggable::Rails::Definition.new attribute, origin: origin, separator: separator, scope: scope
   end
 
   def slugs(from:)
