@@ -4,6 +4,7 @@ module Sluggable
     require 'sluggable/rails/definitions'
     require 'sluggable/rails/slug'
     require 'sluggable/rails/slugs'
+    require 'sluggable/rails/concern'
     require 'sluggable/core_ext'
   end
 end

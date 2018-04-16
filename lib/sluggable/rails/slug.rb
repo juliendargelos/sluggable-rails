@@ -51,7 +51,7 @@ class Sluggable::Rails::Slug < String
   end
 
   def scope
-    definition.scope.map{ |attribute| [atribute, record.send(attribute)] }.to_h
+    definition.scope.map{ |attribute| [attribute, record.send(attribute)] }.to_h
   end
 
   protected

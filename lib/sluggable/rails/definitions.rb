@@ -1,4 +1,6 @@
 class Sluggable::Rails::Definitions
+  include Enumerable
+
   def initialize
     @definitions = {}
   end
@@ -15,5 +17,9 @@ class Sluggable::Rails::Definitions
     slugs = Sluggable::Rails::Slugs.new
     @definitions.each { |_, definition| slugs.add definition, from }
     slugs
+  end
+
+  def each(&block)
+    @definitions.each &block
   end
 end
