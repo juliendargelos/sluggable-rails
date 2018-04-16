@@ -1,9 +1,9 @@
 ActiveRecord::Base.instance_eval do
   before_save :update_slugs
 
-  def has_slug attribute = :slug, by:, separator: '-'
-    slug_definitions.add attribute, origin: by, separator: separator
-    validates attribute, presence: true, uniqueness: true
+  def has_slug(attribute = :slug, by:, separator: '-', scope: nil)
+    slug_definitions.add attribute, origin: by, separator: separator, scope: scope
+    validates attribute, presence: true, uniqueness: scope.present? ? { scope: scope } : true
   end
 
   def slug_definitions

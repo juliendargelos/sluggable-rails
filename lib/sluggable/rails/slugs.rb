@@ -3,7 +3,7 @@ class Sluggable::Rails::Slugs
     @slugs = []
   end
 
-  def add definition, record
+  def add(definition, record)
     @slugs << Sluggable::Rails::Slug.new(definition, record)
   end
 

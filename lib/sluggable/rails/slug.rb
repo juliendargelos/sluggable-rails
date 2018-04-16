@@ -50,6 +50,10 @@ class Sluggable::Rails::Slug < String
     undefined? || changed?
   end
 
+  def scope
+    definition.scope.map{ |attribute| [atribute, record.send(attribute)] }.to_h
+  end
+
   protected
 
   def generate
@@ -64,7 +68,7 @@ class Sluggable::Rails::Slug < String
   end
 
   def unique?
-    found = record.class.find_by definition.attribute => self.to_s
+    found = record.class.find_by (definition.attribute => self.to_s).merge(scope)
     !found || found.id == record.id
   end
 end

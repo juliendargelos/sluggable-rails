@@ -16,8 +16,12 @@ Use the `has_slug` method:
 #  updated_at :datetime         not null
 #
 
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
+  #...
+
   has_slug by: :title
+
+  #...
 end
 ```
 
@@ -25,13 +29,24 @@ In this example, the slug will be generated from the post title. By default, it 
 You can choose another attribute to store it:
 
 ```ruby
-has_slug :custom_attribute, by: :title
+class Post < ApplicationRecord
+  #...
+
+  has_slug :custom_attribute, by: :title
+
+  #...
+end
 ```
 
 The slug is generated with the [`parameterize` method](http://api.rubyonrails.org/v5.1/classes/ActiveSupport/Inflector.html#method-i-parameterize), you can specify a separator as it expects (default: `'-'`):
 
 ```ruby
-has_slug :custom_attribute, by: :title, separator: '_'
+class Post < ApplicationRecord
+  #...
+
+  has_slug :custom_attribute, by: :title, separator: '_'
+
+  #...
 ```
 
 Obviously, you have to add the corresponding column to your schema:
@@ -50,6 +65,39 @@ end
 ```
 
 The slug will be automatically generated in order to be unique. And a `presence` and `uniqueness` validations will also be added by the `has_slug` method.
+
+Moreover, you can define a scope for you slug so its uniqueness will depends on others attributes:
+
+```ruby
+class Post < ApplicationRecord
+  #...
+  
+  belongs_to :user
+  has_slug by: :title, scope: :user_id
+  # You can specify more than one attribute by giving an array of attributes to the scope option.
+
+  #...
+end
+```
+
+In this example, each post will have a slug which is unique for the user it belongs to (but it could be any other attribute).
+
+The corresponding migration would be:
+
+```ruby
+class CreatePosts < ActiveRecord::Migration[5.1]
+  def change
+    create_table :posts do |t|
+      t.string :title
+      t.references :user, foreign_key: true
+      t.string :slug, null: false
+
+      t.timestamps
+    end
+  end
+
+  add_index :posts, [:user_id, :slug], unique: true
+end
 
 ## Installation
 Add this line to your application's Gemfile:
