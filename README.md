@@ -105,9 +105,9 @@ class CreatePosts < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-  end
 
-  add_index :posts, [:user_id, :slug], unique: true
+    add_index :posts, [:user_id, :slug], unique: true
+  end
 end
 
 ## Installation
