@@ -68,7 +68,7 @@ class Sluggable::Rails::Slug < String
   end
 
   def unique?
-    found = record.class.find_by (definition.attribute => self.to_s).merge(scope)
+    found = record.class.find_by({ definition.attribute => self.to_s }.merge(scope))
     !found || found.id == record.id
   end
 end
