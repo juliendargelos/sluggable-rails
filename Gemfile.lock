@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sluggable-rails (0.1.4)
+    sluggable-rails (0.1.5)
       rails (~> 5.2.0)
 
 GEM
