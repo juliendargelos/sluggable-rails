@@ -1,4 +1,7 @@
 # Sluggable Rails 🏅
+[![Gem Version](https://badge.fury.io/rb/sluggable-rails.svg)](https://badge.fury.io/rb/sluggable-rails)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d260555b2cbb561875b4/maintainability)](https://codeclimate.com/github/juliendargelos/sluggable-rails/maintainability)
+
 Provide a unique slug to your records, generated from the attribute of your choice.
 
 ## Usage
@@ -23,6 +26,14 @@ class Post < ApplicationRecord
 
   #...
 end
+```
+
+```ruby
+post = Post.create title: 'My first slugified post!'
+post.slug # "my-first-slugified-post"
+
+another_post = Post.create title: 'My first slugified post!'
+another_post.slug # "my-first-slugified-post-1"
 ```
 
 In this example, the slug will be generated from the post title. By default, it will be stored in the slug attribute.
