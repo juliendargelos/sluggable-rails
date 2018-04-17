@@ -21,6 +21,6 @@ class Sluggable::Rails::Definition
   end
 
   def scope=(v)
-    @scope = [v].flatten.map{ |attribute| :"#{attribute}" }.compact.uniq
+    @scope = [v].flatten.map{ |attribute| attribute.present? ? :"#{attribute}" : nil }.compact.uniq
   end
 end
