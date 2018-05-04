@@ -109,6 +109,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
     add_index :posts, [:user_id, :slug], unique: true
   end
 end
+```
 
 ## Installation
 Add this line to your application's Gemfile:
