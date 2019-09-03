@@ -77,7 +77,7 @@ end
 
 The slug will be automatically generated in order to be unique. And a `presence` and `uniqueness` validations will also be added by the `has_slug` method.
 
-Moreover, you can define a scope for your slug so its uniqueness will depends on others attributes:
+Moreover, you can define a scope for your slug so its uniqueness will depend on other attributes:
 
 ```ruby
 class Post < ApplicationRecord
